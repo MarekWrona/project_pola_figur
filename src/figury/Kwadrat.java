@@ -5,7 +5,6 @@ import static java.lang.Math.pow;
 public class Kwadrat extends Figura {
 
     private double a;
-    private double ghgj;
 
     public Kwadrat(double bok) {
         this.a = bok;
