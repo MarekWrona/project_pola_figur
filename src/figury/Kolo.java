@@ -17,4 +17,11 @@ public class Kolo extends Figura {
         super.setPole(pole);
     }
 
+    public double getPromien() {
+        return promien;
+    }
+
+    public void setPromien(double promien) {
+        this.promien = promien;
+    }
 }

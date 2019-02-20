@@ -3,6 +3,7 @@ package figury;
 public class Trapez extends Figura {
 
     private double podstawa1, podstawa2, wysokosc;
+    private String nazwa;
 
     public Trapez(double podstawa1, double podstawa2, double wysokosc) {
         this.podstawa1 = podstawa1;
