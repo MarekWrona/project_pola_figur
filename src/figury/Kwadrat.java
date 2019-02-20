@@ -6,7 +6,6 @@ public class Kwadrat extends Figura {
 
     private double a;
 
-    //Konstruktor
     public Kwadrat(double bok) {
         this.a = bok;
     }
