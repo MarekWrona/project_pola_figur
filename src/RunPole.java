@@ -5,7 +5,7 @@ public class RunPole {
         EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new MyPole();
+                new MyFrame();
             }
         });
     }
