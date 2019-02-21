@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c12342e3-438b-409a-bde8-3ace793640fb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyPole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyPole.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RunPole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RunPole.java" afterDir="false" />
-    </list>
+    <list default="true" id="c12342e3-438b-409a-bde8-3ace793640fb" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -175,7 +170,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550754957163" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1550755902090" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
