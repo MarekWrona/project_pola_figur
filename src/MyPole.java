@@ -1,5 +1,6 @@
 import figury.*;
 
+//klasa odpowiedzialna za obliczanie pól
 public class MyPole{
 
     private static double a, b, c;
