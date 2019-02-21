@@ -3,6 +3,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//klasa odpowiedzialna za widok
 public class MyFrame extends JFrame implements ActionListener {
 
     private JLabel lblNazwaPole;
