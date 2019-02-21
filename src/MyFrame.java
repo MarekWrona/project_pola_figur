@@ -9,11 +9,12 @@ public class MyFrame extends JFrame implements ActionListener {
     private JLabel lbla;
     private JLabel lblb;
     private JLabel lblc;
+    private JLabel lbld;
     private JLabel lblWynikPole;
-    private JTextField txta, txtb, txtc;
-    private JButton buttonObliczPole;
-    private JButton buttonPoleKWA, buttonPolePRO, buttonPoleKOL, buttonPoleROW, buttonPoleTRA, buttonPoleTRO;
-    private int nrFigury;
+    private JTextField txta, txtb, txtc, txtd;
+    private JButton buttonObliczPole, buttonObliczObwod;
+    private JButton buttonKWA, buttonPRO, buttonKOL, buttonROW, buttonTRA, buttonTRO;
+    private int nrFigury, nrOblicz;
 
     public JLabel getLblNazwaPole() {
         return lblNazwaPole;
@@ -29,6 +30,10 @@ public class MyFrame extends JFrame implements ActionListener {
 
     public JLabel getLblc() {
         return lblc;
+    }
+
+    public JLabel getLbld() {
+        return lbld;
     }
 
     public JLabel getLblWynikPole() {
@@ -47,44 +52,52 @@ public class MyFrame extends JFrame implements ActionListener {
         return txtc;
     }
 
+    public JTextField getTxtd() {
+        return txtd;
+    }
+
     public JButton getButtonObliczPole() {
         return buttonObliczPole;
     }
 
-    public JButton getButtonPoleKWA() {
-        return buttonPoleKWA;
+    public JButton getButtonObliczObwod() {
+        return buttonObliczObwod;
     }
 
-    public JButton getButtonPolePRO() {
-        return buttonPolePRO;
+    public JButton getButtonKWA() {
+        return buttonKWA;
     }
 
-    public JButton getButtonPoleKOL() {
-        return buttonPoleKOL;
+    public JButton getButtonPRO() {
+        return buttonPRO;
     }
 
-    public JButton getButtonPoleROW() {
-        return buttonPoleROW;
+    public JButton getButtonKOL() {
+        return buttonKOL;
     }
 
-    public JButton getButtonPoleTRA() {
-        return buttonPoleTRA;
+    public JButton getButtonROW() {
+        return buttonROW;
     }
 
-    public JButton getButtonPoleTRO() {
-        return buttonPoleTRO;
+    public JButton getButtonTRA() {
+        return buttonTRA;
+    }
+
+    public JButton getButtonTRO() {
+        return buttonTRO;
     }
 
     public MyFrame() {
 
-        super("Pola figur płaskich");
+        super("Pola i obwody figur płaskich");
         setBackground(Color.blue);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         setLocation(300, 200);
         setResizable(false);
 
-        setSize(1000, 315);
+        setSize(1000, 340);
         setLayout(null);
 
         lbla = new JLabel("");
@@ -99,8 +112,12 @@ public class MyFrame extends JFrame implements ActionListener {
         lblc.setBounds(50, 140, 200, 20);
         add(lblc);
 
+        lbld = new JLabel("");
+        lbld.setBounds(50, 180, 200, 20);
+        add(lbld);
+
         lblNazwaPole = new JLabel("Pole figury:");
-        lblNazwaPole.setBounds(50, 200, 100, 20);
+        lblNazwaPole.setBounds(50, 240, 100, 20);
         add(lblNazwaPole);
 
         txta = new JTextField("");
@@ -116,44 +133,53 @@ public class MyFrame extends JFrame implements ActionListener {
         txtc.setBounds(300, 140, 50, 20);
         add(txtc);
 
+        txtd = new JTextField("");
+        txtd.setBounds(300, 180, 50, 20);
+        add(txtd);
+
         lblWynikPole = new JLabel("");
-        lblWynikPole.setBounds(300, 200, 100, 20);
+        lblWynikPole.setBounds(300, 240, 100, 20);
         add(lblWynikPole);
 
         buttonObliczPole = new JButton("Oblicz pole");
-        buttonObliczPole.setBounds(830, 250, 150, 20);
+        buttonObliczPole.setBounds(830, 280, 150, 20);
         add(buttonObliczPole);
         buttonObliczPole.addActionListener(this);
 
-        buttonPoleKWA = new JButton("Pole kwadratu");
-        buttonPoleKWA.setBounds(20, 20, 150, 20);
-        add(buttonPoleKWA);
-        buttonPoleKWA.addActionListener(this);
+        buttonObliczObwod = new JButton("Oblicz obwód");
+        buttonObliczObwod.setBounds(660, 280, 150, 20);
+        add(buttonObliczObwod);
+        buttonObliczObwod.addActionListener(this);
 
-        buttonPolePRO = new JButton("Pole prostokąta");
-        buttonPolePRO.setBounds(180, 20, 150, 20);
-        add(buttonPolePRO);
-        buttonPolePRO.addActionListener(this);
+        buttonKWA = new JButton("Kwadrat");
+        buttonKWA.setBounds(20, 20, 150, 20);
+        add(buttonKWA);
+        buttonKWA.addActionListener(this);
 
-        buttonPoleKOL = new JButton("Pole koła");
-        buttonPoleKOL.setBounds(340, 20, 150, 20);
-        add(buttonPoleKOL);
-        buttonPoleKOL.addActionListener(this);
+        buttonPRO = new JButton("Prostokąt");
+        buttonPRO.setBounds(180, 20, 150, 20);
+        add(buttonPRO);
+        buttonPRO.addActionListener(this);
 
-        buttonPoleROW = new JButton("Pole równoległoboku");
-        buttonPoleROW.setBounds(500, 20, 150, 20);
-        add(buttonPoleROW);
-        buttonPoleROW.addActionListener(this);
+        buttonKOL = new JButton("Koło");
+        buttonKOL.setBounds(340, 20, 150, 20);
+        add(buttonKOL);
+        buttonKOL.addActionListener(this);
 
-        buttonPoleTRA = new JButton("Pole trapezu");
-        buttonPoleTRA.setBounds(660, 20, 150, 20);
-        add(buttonPoleTRA);
-        buttonPoleTRA.addActionListener(this);
+        buttonROW = new JButton("Równoległobok");
+        buttonROW.setBounds(500, 20, 150, 20);
+        add(buttonROW);
+        buttonROW.addActionListener(this);
 
-        buttonPoleTRO = new JButton("Pole trójkąta");
-        buttonPoleTRO.setBounds(830, 20, 150, 20);
-        add(buttonPoleTRO);
-        buttonPoleTRO.addActionListener(this);
+        buttonTRA = new JButton("Trapez");
+        buttonTRA.setBounds(660, 20, 150, 20);
+        add(buttonTRA);
+        buttonTRA.addActionListener(this);
+
+        buttonTRO = new JButton("Trójkąt");
+        buttonTRO.setBounds(830, 20, 150, 20);
+        add(buttonTRO);
+        buttonTRO.addActionListener(this);
 
         ukryjAll();
     }
@@ -163,6 +189,7 @@ public class MyFrame extends JFrame implements ActionListener {
         getLbla().setVisible(false);
         getLblb().setVisible(false);
         getLblc().setVisible(false);
+        getLbld().setVisible(false);
         getLblWynikPole().setVisible(false);
         getLblWynikPole().setText("");
         getTxta().setVisible(false);
@@ -171,23 +198,26 @@ public class MyFrame extends JFrame implements ActionListener {
         getTxtb().setText("");
         getTxtc().setVisible(false);
         getTxtc().setText("");
+        getTxtd().setVisible(false);
+        getTxtd().setText("");
         getButtonObliczPole().setVisible(false);
+        getButtonObliczObwod().setVisible(false);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
 
-        if (source == buttonPoleKWA || source == buttonPoleKOL) {
+        if (source == buttonKWA) {
             ukryjAll();
-            lbla.setText("Bok kwadratu:");
-            lbla.setVisible(true);
+            getLbla().setText("Bok kwadratu:");
+            getLbla().setVisible(true);
             getTxta().setVisible(true);
             getButtonObliczPole().setVisible(true);
-            if (source == getButtonPoleKWA()) nrFigury = 1;
-            else nrFigury = 3;
+            getButtonObliczObwod().setVisible(true);
+            nrFigury = 1;
 
-        } else if (source == getButtonPolePRO() || source == getButtonPoleROW()) {
+        }else if (source == getButtonPRO()) {
             ukryjAll();
             getLbla().setText("Pierwszy bok prostokąta:");
             getLbla().setVisible(true);
@@ -196,10 +226,31 @@ public class MyFrame extends JFrame implements ActionListener {
             getLblb().setVisible(true);
             getTxtb().setVisible(true);
             getButtonObliczPole().setVisible(true);
-            if (source == getButtonPolePRO()) nrFigury = 2;
-            else nrFigury = 4;
+            getButtonObliczObwod().setVisible(true);
+            nrFigury = 2;
 
-        } else if (source == getButtonPoleTRA()) {
+        } else if(source == buttonKOL) {
+            ukryjAll();
+            getLbla().setText("Promień koła:");
+            getLbla().setVisible(true);
+            getTxta().setVisible(true);
+            getButtonObliczPole().setVisible(true);
+            getButtonObliczObwod().setVisible(true);
+            nrFigury = 3;
+
+        }else if (source == getButtonROW()) {
+            ukryjAll();
+            getLbla().setText("Bok równoległoboku:");
+            getLbla().setVisible(true);
+            getTxta().setVisible(true);
+            getLblb().setText("Wysokość równoległoboku:");
+            getLblb().setVisible(true);
+            getTxtb().setVisible(true);
+            getButtonObliczPole().setVisible(true);
+            getButtonObliczObwod().setVisible(true);
+            nrFigury = 4;
+
+        } else if (source == getButtonTRA()) {
             ukryjAll();
             getLbla().setText("Pierwsza podstawa trapezu:");
             getLbla().setVisible(true);
@@ -211,9 +262,10 @@ public class MyFrame extends JFrame implements ActionListener {
             getLblc().setVisible(true);
             getTxtc().setVisible(true);
             getButtonObliczPole().setVisible(true);
+            getButtonObliczObwod().setVisible(true);
             nrFigury = 5;
 
-        } else if (source == getButtonPoleTRO()) {
+        } else if (source == getButtonTRO()) {
             ukryjAll();
             getLbla().setText("Podstawa trójkąta:");
             getLbla().setVisible(true);
@@ -222,10 +274,70 @@ public class MyFrame extends JFrame implements ActionListener {
             getLblb().setVisible(true);
             getTxtb().setVisible(true);
             getButtonObliczPole().setVisible(true);
+            getButtonObliczObwod().setVisible(true);
             nrFigury = 6;
-        } else {
+
+        } else if (source == getButtonObliczPole()){
             String pole = MyPole.obliczPole(nrFigury, this);
+            getLblNazwaPole().setText("Pole figury:");
             getLblWynikPole().setText(pole);
+            nrOblicz = 1;
+
+        } else {
+            String obwod = MyObwod.obliczObwod(nrFigury, this);
+            getLblNazwaPole().setText("Obwód figury:");
+            getLblWynikPole().setText(obwod);
+            nrOblicz = 2;
+
+        }
+
+        switch (nrFigury) {
+            case 4: {
+                if (nrOblicz == 1){
+                    getLblb().setText("Wysokość równoległoboku:");
+                } else {
+                    getLblb().setText("Ramię równoległoboku:");
+                }
+                break;
+            }
+            case 5: {
+                if (nrOblicz == 1){
+                    getLblc().setText("Wysokość trapezu:");
+                    getLbld().setVisible(false);
+                    getLbld().setText("");
+                    getTxtd().setVisible(false);
+                    getTxtd().setText("0");
+                } else {
+                    getLblc().setText("Pierwsze ramię trapezu:");
+                    getLbld().setText("Drugie ramię trapezu:");
+                    getLbld().setVisible(true);
+                    getTxtd().setVisible(true);
+                }
+                break;
+            }
+            case 6: {
+                if (nrOblicz == 1){
+                    getLblb().setText("Wysokość trójkąta:");
+                    getLblc().setVisible(false);
+                    getLblc().setText("");
+                    getTxtc().setVisible(false);
+                    getTxtc().setText("0");
+                } else {
+                    getLblb().setText("Jeden bok trójkąta:");
+                    getLblc().setText("Drugi bok trójkąta:");
+                    getLblc().setVisible(true);
+                    getTxtc().setVisible(true);
+                }
+                break;
+            }
+            default: {
+                if (nrOblicz == 1) {
+                    getLblNazwaPole().setText("Pole figury:");
+                } else {
+                    getLblNazwaPole().setText("Obwód figury:");
+                }
+                break;
+            }
         }
     }
 }

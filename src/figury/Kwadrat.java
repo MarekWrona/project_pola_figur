@@ -4,16 +4,21 @@ import static java.lang.Math.pow;
 
 public class Kwadrat extends Figura {
 
-    private double a;
+    private double bok;
 
     public Kwadrat(double bok) {
-        this.a = bok;
+        this.bok = bok;
     }
 
     @Override
     public void obliczPole() {
-        double pole = pow(a,2);
+        double pole = pow(bok,2);
         super.setPole(pole);
     }
 
+    @Override
+    public void obliczObwod() {
+        double obwod = 4*bok;
+        super.setObwod(obwod);
+    }
 }

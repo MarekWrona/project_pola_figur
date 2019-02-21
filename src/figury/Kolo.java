@@ -17,11 +17,10 @@ public class Kolo extends Figura {
         super.setPole(pole);
     }
 
-    public double getPromien() {
-        return promien;
+    @Override
+    public void obliczObwod() {
+        double obwod = 2*PI*promien;
+        super.setObwod(obwod);
     }
 
-    public void setPromien(double promien) {
-        this.promien = promien;
-    }
 }

@@ -15,4 +15,10 @@ public class Prostokat extends Figura {
         super.setPole(pole);
     }
 
+    @Override
+    public void obliczObwod() {
+        double obwod = 2*(bokA + bokB);
+        super.setObwod(obwod);
+    }
+
 }
