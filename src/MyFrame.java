@@ -12,7 +12,11 @@ public class MyFrame extends JFrame implements ActionListener {
     private JLabel lblc;
     private JLabel lbld;
     private JLabel lblWynikPole;
-    private JTextField txta, txtb, txtc, txtd;
+    private JLabel lblKomentarz;
+    public JTextField txta;
+    public JTextField txtb;
+    public JTextField txtc;
+    public JTextField txtd;
     private JButton buttonObliczPole, buttonObliczObwod;
     private JButton buttonKWA, buttonPRO, buttonKOL, buttonROW, buttonTRA, buttonTRO;
     private int nrFigury, nrOblicz;
@@ -40,6 +44,8 @@ public class MyFrame extends JFrame implements ActionListener {
     public JLabel getLblWynikPole() {
         return lblWynikPole;
     }
+
+    public JLabel getLblKomentarz() { return lblKomentarz; }
 
     public JTextField getTxta() {
         return txta;
@@ -121,6 +127,10 @@ public class MyFrame extends JFrame implements ActionListener {
         lblNazwaPole.setBounds(50, 240, 100, 20);
         add(lblNazwaPole);
 
+        lblKomentarz = new JLabel("");
+        lblKomentarz.setBounds(500, 240, 400, 20);
+        add(lblKomentarz);
+
         txta = new JTextField("");
         txta.setBounds(300, 60, 50, 20);
         add(txta);
@@ -185,6 +195,17 @@ public class MyFrame extends JFrame implements ActionListener {
         ukryjAll();
     }
 
+    //ustawienie pustego pola tekstowego po wpisaniu danych niewłaściwego typu
+    public void ustawPustePole(){
+        txta.setText("");
+        txtb.setText("");
+        txtc.setText("");
+        txtd.setText("");
+        lblWynikPole.setText("");
+        lblKomentarz.setText("Zawartość pola/pól tekstowych nie jest liczbą! Wprowadź liczby.");
+    }
+
+    // ukrywanie wszystkich pól na formatce
     public void ukryjAll(){
         getLblNazwaPole().setVisible(false);
         getLbla().setVisible(false);
@@ -193,6 +214,8 @@ public class MyFrame extends JFrame implements ActionListener {
         getLbld().setVisible(false);
         getLblWynikPole().setVisible(false);
         getLblWynikPole().setText("");
+        lblKomentarz.setVisible(false);
+        lblKomentarz.setText("");
         getTxta().setVisible(false);
         getTxta().setText("");
         getTxtb().setVisible(false);
@@ -205,9 +228,13 @@ public class MyFrame extends JFrame implements ActionListener {
         getButtonObliczObwod().setVisible(false);
     }
 
+    //reakcja na naciśnięcie przyciaków
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
+
+        lblKomentarz.setVisible(false);
+        lblKomentarz.setText("");
 
         if (source == buttonKWA) {
             ukryjAll();
@@ -292,6 +319,7 @@ public class MyFrame extends JFrame implements ActionListener {
 
         }
 
+        //Jeśli wybrane POLE lub OBWÓD wyświetlane są inne nazwy w Label i róąna liczba potrzebnych danych
         switch (nrFigury) {
             case 4: {
                 if (nrOblicz == 1){
