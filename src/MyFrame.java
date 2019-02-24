@@ -2,6 +2,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.geom.*;
 
 //klasa odpowiedzialna za widok
 public class MyFrame extends JFrame implements ActionListener {
@@ -98,6 +99,7 @@ public class MyFrame extends JFrame implements ActionListener {
     public MyFrame() {
 
         super("Pola i obwody figur płaskich");
+
         setBackground(Color.blue);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
@@ -369,5 +371,6 @@ public class MyFrame extends JFrame implements ActionListener {
             }
         }
     }
+
 }
 
