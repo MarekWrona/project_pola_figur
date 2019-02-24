@@ -72,29 +72,7 @@ public class MyFrame extends JFrame implements ActionListener {
         return buttonObliczObwod;
     }
 
-    public JButton getButtonKWA() {
-        return buttonKWA;
-    }
-
-    public JButton getButtonPRO() {
-        return buttonPRO;
-    }
-
-    public JButton getButtonKOL() {
-        return buttonKOL;
-    }
-
-    public JButton getButtonROW() {
-        return buttonROW;
-    }
-
-    public JButton getButtonTRA() {
-        return buttonTRA;
-    }
-
-    public JButton getButtonTRO() {
-        return buttonTRO;
-    }
+    Font font = new Font("Serif", Font.BOLD, 36);
 
     public MyFrame() {
 
@@ -130,7 +108,9 @@ public class MyFrame extends JFrame implements ActionListener {
         add(lblNazwaPole);
 
         lblKomentarz = new JLabel("");
-        lblKomentarz.setBounds(500, 240, 400, 20);
+        lblKomentarz.setHorizontalAlignment(0);
+        lblKomentarz.setFont(font);
+        lblKomentarz.setBounds(500, 50, 480, 200);
         add(lblKomentarz);
 
         txta = new JTextField("");
@@ -209,25 +189,25 @@ public class MyFrame extends JFrame implements ActionListener {
 
     // ukrywanie wszystkich pól na formatce
     public void ukryjAll(){
-        getLblNazwaPole().setVisible(false);
-        getLbla().setVisible(false);
-        getLblb().setVisible(false);
-        getLblc().setVisible(false);
-        getLbld().setVisible(false);
-        getLblWynikPole().setVisible(false);
-        getLblWynikPole().setText("");
-        lblKomentarz.setVisible(false);
-        lblKomentarz.setText("");
-        getTxta().setVisible(false);
-        getTxta().setText("");
-        getTxtb().setVisible(false);
-        getTxtb().setText("");
-        getTxtc().setVisible(false);
-        getTxtc().setText("");
-        getTxtd().setVisible(false);
-        getTxtd().setText("");
-        getButtonObliczPole().setVisible(false);
-        getButtonObliczObwod().setVisible(false);
+        lblNazwaPole.setVisible(false);
+        lbla.setVisible(false);
+        lblb.setVisible(false);
+        lblc.setVisible(false);
+        lbld.setVisible(false);
+        lblWynikPole.setVisible(false);
+        lblWynikPole.setText("");
+        //lblKomentarz.setVisible(false);
+        //lblKomentarz.setText("");
+        txta.setVisible(false);
+        txta.setText("");
+        txtb.setVisible(false);
+        txtb.setText("");
+        txtc.setVisible(false);
+        txtc.setText("");
+        txtd.setVisible(false);
+        txtd.setText("");
+        buttonObliczPole.setVisible(false);
+        buttonObliczObwod.setVisible(false);
     }
 
     //reakcja na naciśnięcie przyciaków
@@ -235,19 +215,19 @@ public class MyFrame extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
 
-        lblKomentarz.setVisible(false);
-        lblKomentarz.setText("");
+        //getLblKomentarz().setVisible(false);
 
         if (source == buttonKWA) {
             ukryjAll();
             getLbla().setText("Bok kwadratu:");
             getLbla().setVisible(true);
             getTxta().setVisible(true);
-            getButtonObliczPole().setVisible(true);
-            getButtonObliczObwod().setVisible(true);
+            buttonObliczPole.setVisible(true);
+            buttonObliczObwod.setVisible(true);
+            getLblKomentarz().setText("KWADRAT");
             nrFigury = 1;
 
-        }else if (source == getButtonPRO()) {
+        }else if (source == buttonPRO) {
             ukryjAll();
             getLbla().setText("Pierwszy bok prostokąta:");
             getLbla().setVisible(true);
@@ -255,8 +235,9 @@ public class MyFrame extends JFrame implements ActionListener {
             getLblb().setText("Drugi bok prostokąta:");
             getLblb().setVisible(true);
             getTxtb().setVisible(true);
-            getButtonObliczPole().setVisible(true);
-            getButtonObliczObwod().setVisible(true);
+            buttonObliczPole.setVisible(true);
+            buttonObliczObwod.setVisible(true);
+            getLblKomentarz().setText("PROSTOKĄT");
             nrFigury = 2;
 
         } else if(source == buttonKOL) {
@@ -264,11 +245,12 @@ public class MyFrame extends JFrame implements ActionListener {
             getLbla().setText("Promień koła:");
             getLbla().setVisible(true);
             getTxta().setVisible(true);
-            getButtonObliczPole().setVisible(true);
-            getButtonObliczObwod().setVisible(true);
+            buttonObliczPole.setVisible(true);
+            buttonObliczObwod.setVisible(true);
+            getLblKomentarz().setText("KOŁO");
             nrFigury = 3;
 
-        }else if (source == getButtonROW()) {
+        }else if (source == buttonROW) {
             ukryjAll();
             getLbla().setText("Bok równoległoboku:");
             getLbla().setVisible(true);
@@ -278,9 +260,10 @@ public class MyFrame extends JFrame implements ActionListener {
             getTxtb().setVisible(true);
             getButtonObliczPole().setVisible(true);
             getButtonObliczObwod().setVisible(true);
+            getLblKomentarz().setText("RÓWNOLEGŁOBOK");
             nrFigury = 4;
 
-        } else if (source == getButtonTRA()) {
+        } else if (source == buttonTRA) {
             ukryjAll();
             getLbla().setText("Pierwsza podstawa trapezu:");
             getLbla().setVisible(true);
@@ -291,11 +274,12 @@ public class MyFrame extends JFrame implements ActionListener {
             getLblc().setText("Wysokość trapezu:");
             getLblc().setVisible(true);
             getTxtc().setVisible(true);
-            getButtonObliczPole().setVisible(true);
-            getButtonObliczObwod().setVisible(true);
+            buttonObliczPole.setVisible(true);
+            buttonObliczObwod.setVisible(true);
+            getLblKomentarz().setText("TRAPEZ");
             nrFigury = 5;
 
-        } else if (source == getButtonTRO()) {
+        } else if (source == buttonTRO) {
             ukryjAll();
             getLbla().setText("Podstawa trójkąta:");
             getLbla().setVisible(true);
@@ -303,11 +287,12 @@ public class MyFrame extends JFrame implements ActionListener {
             getLblb().setText("Wysokość trójkąta:");
             getLblb().setVisible(true);
             getTxtb().setVisible(true);
-            getButtonObliczPole().setVisible(true);
-            getButtonObliczObwod().setVisible(true);
+            buttonObliczPole.setVisible(true);
+            buttonObliczObwod.setVisible(true);
+            getLblKomentarz().setText("TRÓJKĄT");
             nrFigury = 6;
 
-        } else if (source == getButtonObliczPole()){
+        } else if (source == buttonObliczPole){
             String pole = MyPole.obliczPole(nrFigury, this);
             getLblNazwaPole().setText("Pole figury:");
             getLblWynikPole().setText(pole);

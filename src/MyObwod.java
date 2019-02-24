@@ -75,8 +75,8 @@ public class MyObwod {
             myFrame.txtd.setText("");
 */
             myFrame.ukryjAll();
-            myFrame.getLblKomentarz().setText("Zawartość pola/pól tekstowych nie jest liczbą! Wprowadź liczby.");
-            myFrame.getLblKomentarz().setVisible(true);
+            myFrame.getLblKomentarz().setText("Wprowadź liczbę !");
+            //myFrame.getLblKomentarz().setVisible(true);
         }
         figura.obliczObwod();
         return figura.getObwod();

@@ -65,8 +65,8 @@ public class MyPole{
             c = 0;
             figura = new Kwadrat(a);
             myFrame.ukryjAll();
-            myFrame.getLblKomentarz().setText("Zawartość pola/pól tekstowych nie jest liczbą! Wprowadź liczby.");
-            myFrame.getLblKomentarz().setVisible(true);
+            myFrame.getLblKomentarz().setText("Wprowadź liczbę !");
+            //myFrame.getLblKomentarz().setVisible(true);
             //MyFrame.ustawPustePole();
         }
 
