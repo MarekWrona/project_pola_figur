@@ -2,7 +2,7 @@ package figury;
 
 public class Rownoleglobok extends Figura {
 
-    private double podstawa, wysokosc, ramie;
+    private double podstawa, wysokosc;
 
     public Rownoleglobok(double podstawa, double wysokosc) {
         this.podstawa = podstawa;
@@ -17,7 +17,7 @@ public class Rownoleglobok extends Figura {
 
     @Override
     public void obliczObwod() {
-        double obwod = 2*(podstawa + ramie);
+        double obwod = 2*(podstawa + wysokosc);
         super.setObwod(obwod);
     }
 

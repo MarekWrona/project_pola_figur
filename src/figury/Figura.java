@@ -5,8 +5,6 @@ import java.text.DecimalFormat;
 public abstract class Figura {
 
     private double pole, obwod;
-    private String nazwaFigury;
-
 
     public String getPole() {
         //return Math.round(pole);
@@ -28,15 +26,7 @@ public abstract class Figura {
         this.pole = pole;
     }
 
-    public void setNazwaFigury(String nazwaFigury) {
-        this.nazwaFigury = nazwaFigury;
-    }
-
     public abstract void obliczPole();
 
     public abstract void obliczObwod();
-
-    public void wyswietlWynik(){
-        System.out.println(nazwaFigury + " ma pole równe: " + getPole());
-    }
 }

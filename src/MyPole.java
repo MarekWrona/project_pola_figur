@@ -3,7 +3,7 @@ import figury.*;
 //klasa odpowiedzialna za obliczanie pól
 public class MyPole{
 
-    private static double a, b, c;
+    private static double a, b, c, d;
 
     public static String obliczPole(int nrFigury, MyFrame myFrame){
         myFrame.getLblNazwaPole().setVisible(true);
@@ -63,11 +63,10 @@ public class MyPole{
             a = 0;
             b = 0;
             c = 0;
+            d = 0;
             figura = new Kwadrat(a);
             myFrame.ukryjAll();
-            myFrame.getLblKomentarz().setText("Wprowadź liczbę !");
-            //myFrame.getLblKomentarz().setVisible(true);
-            //MyFrame.ustawPustePole();
+            myFrame.getLblKomentarz().setText("Musisz wprowadzić liczbę !");
         }
 
         figura.obliczPole();

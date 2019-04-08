@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.geom.*;
 
 //klasa odpowiedzialna za widok
 public class MyFrame extends JFrame implements ActionListener {
@@ -14,13 +13,14 @@ public class MyFrame extends JFrame implements ActionListener {
     private JLabel lbld;
     private JLabel lblWynikPole;
     private JLabel lblKomentarz;
-    public JTextField txta;
-    public JTextField txtb;
-    public JTextField txtc;
-    public JTextField txtd;
+    private JTextField txta;
+    private JTextField txtb;
+    private JTextField txtc;
+    private JTextField txtd;
     private JButton buttonObliczPole, buttonObliczObwod;
     private JButton buttonKWA, buttonPRO, buttonKOL, buttonROW, buttonTRA, buttonTRO;
-    private int nrFigury, nrOblicz;
+    private JPanel[] panel = new JPanel[7];
+    private int nrFigury, wyborOpcjiObliczania;
 
     public JLabel getLblNazwaPole() {
         return lblNazwaPole;
@@ -72,7 +72,8 @@ public class MyFrame extends JFrame implements ActionListener {
         return buttonObliczObwod;
     }
 
-    Font font = new Font("Serif", Font.BOLD, 36);
+    Font font30 = new Font("Serif", Font.BOLD, 30);
+    Font font24 = new Font("Serif", Font.BOLD, 24);
 
     public MyFrame() {
 
@@ -84,8 +85,16 @@ public class MyFrame extends JFrame implements ActionListener {
         setLocation(300, 200);
         setResizable(false);
 
-        setSize(1000, 340);
+        setSize(990, 360);
         setLayout(null);
+
+        for (int i=1; i<=6; i++) {
+            panel[i] = new MyShape(i);
+            panel[i].setBounds(650, 60, 300, 200);
+            add(panel[i]);
+            ((MyShape) panel[i]).paintComponent();
+            add(panel[i]);
+        }
 
         lbla = new JLabel("");
         lbla.setBounds(50, 60, 200, 20);
@@ -104,13 +113,15 @@ public class MyFrame extends JFrame implements ActionListener {
         add(lbld);
 
         lblNazwaPole = new JLabel("Pole figury:");
-        lblNazwaPole.setBounds(50, 240, 100, 20);
+        lblNazwaPole.setHorizontalAlignment(0);
+        lblNazwaPole.setFont(font24);
+        lblNazwaPole.setBounds(380, 120, 250, 40);
         add(lblNazwaPole);
 
         lblKomentarz = new JLabel("");
         lblKomentarz.setHorizontalAlignment(0);
-        lblKomentarz.setFont(font);
-        lblKomentarz.setBounds(500, 50, 480, 200);
+        lblKomentarz.setFont(font30);
+        lblKomentarz.setBounds(20, 260, 480, 40);
         add(lblKomentarz);
 
         txta = new JTextField("");
@@ -131,11 +142,13 @@ public class MyFrame extends JFrame implements ActionListener {
         add(txtd);
 
         lblWynikPole = new JLabel("");
-        lblWynikPole.setBounds(300, 240, 100, 20);
+        lblWynikPole.setHorizontalAlignment(0);
+        lblWynikPole.setFont(font24);
+        lblWynikPole.setBounds(380, 160, 250, 40);
         add(lblWynikPole);
 
         buttonObliczPole = new JButton("Oblicz pole");
-        buttonObliczPole.setBounds(830, 280, 150, 20);
+        buttonObliczPole.setBounds(820, 280, 150, 20);
         add(buttonObliczPole);
         buttonObliczPole.addActionListener(this);
 
@@ -170,21 +183,11 @@ public class MyFrame extends JFrame implements ActionListener {
         buttonTRA.addActionListener(this);
 
         buttonTRO = new JButton("Trójkąt");
-        buttonTRO.setBounds(830, 20, 150, 20);
+        buttonTRO.setBounds(820, 20, 150, 20);
         add(buttonTRO);
         buttonTRO.addActionListener(this);
 
         ukryjAll();
-    }
-
-    //ustawienie pustego pola tekstowego po wpisaniu danych niewłaściwego typu
-    public void ustawPustePole(){
-        txta.setText("");
-        txtb.setText("");
-        txtc.setText("");
-        txtd.setText("");
-        lblWynikPole.setText("");
-        lblKomentarz.setText("Zawartość pola/pól tekstowych nie jest liczbą! Wprowadź liczby.");
     }
 
     // ukrywanie wszystkich pól na formatce
@@ -196,8 +199,6 @@ public class MyFrame extends JFrame implements ActionListener {
         lbld.setVisible(false);
         lblWynikPole.setVisible(false);
         lblWynikPole.setText("");
-        //lblKomentarz.setVisible(false);
-        //lblKomentarz.setText("");
         txta.setVisible(false);
         txta.setText("");
         txtb.setVisible(false);
@@ -208,14 +209,15 @@ public class MyFrame extends JFrame implements ActionListener {
         txtd.setText("");
         buttonObliczPole.setVisible(false);
         buttonObliczObwod.setVisible(false);
+        for (int i=1; i<=6; i++) {
+            panel[i].setVisible(false);
+        }
     }
 
     //reakcja na naciśnięcie przyciaków
     @Override
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
-
-        //getLblKomentarz().setVisible(false);
 
         if (source == buttonKWA) {
             ukryjAll();
@@ -293,23 +295,23 @@ public class MyFrame extends JFrame implements ActionListener {
             nrFigury = 6;
 
         } else if (source == buttonObliczPole){
-            String pole = MyPole.obliczPole(nrFigury, this);
             getLblNazwaPole().setText("Pole figury:");
+            wyborOpcjiObliczania = 1;
+            String pole = MyPole.obliczPole(nrFigury, this);
             getLblWynikPole().setText(pole);
-            nrOblicz = 1;
 
-        } else {
-            String obwod = MyObwod.obliczObwod(nrFigury, this);
+        } else if (source == buttonObliczObwod) {
             getLblNazwaPole().setText("Obwód figury:");
+            wyborOpcjiObliczania = 2;
+            String obwod = MyObwod.obliczObwod(nrFigury, this);
             getLblWynikPole().setText(obwod);
-            nrOblicz = 2;
 
         }
 
         //Jeśli wybrane POLE lub OBWÓD wyświetlane są inne nazwy w Label i róąna liczba potrzebnych danych
         switch (nrFigury) {
             case 4: {
-                if (nrOblicz == 1){
+                if (wyborOpcjiObliczania == 1){
                     getLblb().setText("Wysokość równoległoboku:");
                 } else {
                     getLblb().setText("Ramię równoległoboku:");
@@ -317,7 +319,7 @@ public class MyFrame extends JFrame implements ActionListener {
                 break;
             }
             case 5: {
-                if (nrOblicz == 1){
+                if (wyborOpcjiObliczania == 1){
                     getLblc().setText("Wysokość trapezu:");
                     getLbld().setVisible(false);
                     getLbld().setText("");
@@ -332,7 +334,7 @@ public class MyFrame extends JFrame implements ActionListener {
                 break;
             }
             case 6: {
-                if (nrOblicz == 1){
+                if (wyborOpcjiObliczania == 1){
                     getLblb().setText("Wysokość trójkąta:");
                     getLblc().setVisible(false);
                     getLblc().setText("");
@@ -340,14 +342,16 @@ public class MyFrame extends JFrame implements ActionListener {
                     getTxtc().setText("0");
                 } else {
                     getLblb().setText("Jeden bok trójkąta:");
+                    getTxtb().setText("");
                     getLblc().setText("Drugi bok trójkąta:");
+                    getTxtc().setText("");
                     getLblc().setVisible(true);
                     getTxtc().setVisible(true);
                 }
                 break;
             }
             default: {
-                if (nrOblicz == 1) {
+                if (wyborOpcjiObliczania == 1) {
                     getLblNazwaPole().setText("Pole figury:");
                 } else {
                     getLblNazwaPole().setText("Obwód figury:");
@@ -355,6 +359,7 @@ public class MyFrame extends JFrame implements ActionListener {
                 break;
             }
         }
+        panel[nrFigury].setVisible(true);
     }
 
 }

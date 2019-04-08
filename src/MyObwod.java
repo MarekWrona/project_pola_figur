@@ -58,7 +58,6 @@ public class MyObwod {
                 default: {
                     break;
                 }
-
             }
 
             // gdy w pola tekstowe zostało wpisane coś i nie da się tego skonwertować do double
@@ -67,16 +66,10 @@ public class MyObwod {
             b = 0;
             c = 0;
             d = 0;
-            figura = new Kwadrat(a);
-/*
-            myFrame.txta.setText("");
-            myFrame.txtb.setText("");
-            myFrame.txtc.setText("");
-            myFrame.txtd.setText("");
-*/
+            figura = new Trapez(a, b, c, d);
             myFrame.ukryjAll();
-            myFrame.getLblKomentarz().setText("Wprowadź liczbę !");
-            //myFrame.getLblKomentarz().setVisible(true);
+            myFrame.getLblKomentarz().setText("Musisz wprowadzić liczbę !");
+
         }
         figura.obliczObwod();
         return figura.getObwod();
